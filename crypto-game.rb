@@ -1,4 +1,4 @@
-# If you want to try this game quickly just copy paste this code 
+# If you want to try this game quickly just copy paste this code
 # in the FREE online IDE: https://repl.it/languages/ruby
 
 # automate the input with "> " prompt
@@ -64,6 +64,7 @@ def goodbye
   puts thanks
   comeback = "I hope to see you soon."
   puts comeback
+  podia
 end
 
 # Propose to get a domain on a blockchain
@@ -103,28 +104,52 @@ def buy_crypto
   end
 end
 
+
+def cdbssr
+  cdbssr = "http://bit.ly/cdbssr-free"
+  puts "Maybe you could learn some basics about the technology?"
+  puts "Check this out: #{cdbssr}!"
+  puts "Comment Découvrir la Blockchain Sans Se Ruiner"
+  puts "IT'S 100% FREE!"
+  puts "For other courses"
+  podia
+end
+
+def blockchain_pack
+  puts "If you want to go further, just check my blockchain pack:"
+  blockchain_pack = "https://laurentgarnier.podia.com/pack-blockchain"
+  puts "#{blockchain_pack}"
+  puts "For other courses"
+  podia
+end
+
+def cddb
+  cddb = "http://bit.ly/cddb-podia"
+  puts "Or get my Blockchain developer bootcamp here #{cddb}"
+  puts "For other courses"
+  podia
+end
+
+def podia
+  podia = "https://laurentgarnier.podia.com/"
+  puts "Go visit my courses page on Podia: #{podia}"
+  puts "What if you want to create your own course and make money online?"
+  own_course = "http://bit.ly/podia-profil"
+  puts "Just click here: #{own_course}"
+end
+
 # propose some of my courses to go further in the blockchain adventure
 # be aware that all my courses are in French, but if you ask I could
 # add English subtitles
 def pub(course_name)
   if course_name == "cdbssr"
-    cdbssr = "http://bit.ly/cdbssr-free"
-    puts "Maybe you could learn some basics about the technology?"
-    puts "Check this out: #{cdbssr}!"
-    puts "IT'S 100% FREE!"
+    cdbssr
   elsif course_name == "blockchain_pack"
-    puts "If you want to go further, just check my blockchain pack:"
-    blockchain_pack = "https://laurentgarnier.podia.com/pack-blockchain"
-    puts "#{blockchain_pack}"
+    blockchain_pack
   elsif course_name == "cddb"
-    cddb = "http://bit.ly/cddb-podia"
-    puts "Or get my Blockchain developer bootcamp here #{cddb}"
+    cddb
   else
-    podia = "https://laurentgarnier.podia.com/"
-    puts "Go visit my courses page on Podia: #{podia}"
-    puts "What if you want to create your own course?"
-    own_course = "http://bit.ly/podia-profil"
-    puts "Just click here: #{own_course}"
+    podia
   end
   puts "Do you still have money?"
   puts "1. Yes"
@@ -135,6 +160,18 @@ def pub(course_name)
   if money == "1"
     buy_crypto
   else
+    puts "Do you want a free course?"
+    puts "1. Yes, of course!"
+    puts "2. No, I prefer to pay"
+
+    free_course = get_data
+
+    if free_course == "1"
+      cdbssr
+    else
+      podia
+    end
+
     goodbye
   end
 end
