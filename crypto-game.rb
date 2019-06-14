@@ -1,3 +1,6 @@
+# If you want to try this game quickly just copy paste this code 
+# in the FREE online IDE: https://repl.it/languages/ruby
+
 # automate the input with "> " prompt
 def get_data
   print "> "
@@ -49,7 +52,6 @@ def goodbye
 
   if time == "1" || time == "2"
     puts "Have a nice day!"
-
   elsif time == "3"
     puts "Have a nice evening!"
   elsif time == "4"
@@ -72,7 +74,9 @@ def domain
   puts "Do you want to buy an unstoppable domain on Zilliqa blockchain?"
   puts "1. Yes"
   puts "2. No"
+
   domain = get_data
+
   if domain == "1"
     zil = "http://bit.ly/unstoppabledomain"
     puts "Go visit this website #{zil}"
@@ -83,7 +87,7 @@ end
 
 # buy crypto
 def buy_crypto
-  puts "Do you want to by crypto?"
+  puts "Do you want to buy crypto?"
   puts "1. Yes"
   puts "2. No"
 
@@ -92,7 +96,6 @@ def buy_crypto
   if buy == "1"
     puts "You have 3 good and easy options to get started:"
     wallet
-
   elsif buy == "2"
     domain
   else
@@ -108,7 +111,7 @@ def pub(course_name)
     cdbssr = "http://bit.ly/cdbssr-free"
     puts "Maybe you could learn some basics about the technology?"
     puts "Check this out: #{cdbssr}!"
-    puts "It's free!"
+    puts "IT'S 100% FREE!"
   elsif course_name == "blockchain_pack"
     puts "If you want to go further, just check my blockchain pack:"
     blockchain_pack = "https://laurentgarnier.podia.com/pack-blockchain"
@@ -123,7 +126,7 @@ def pub(course_name)
     own_course = "http://bit.ly/podia-profil"
     puts "Just click here: #{own_course}"
   end
-  puts "Do you have still money?"
+  puts "Do you still have money?"
   puts "1. Yes"
   puts "2. No"
 
@@ -137,6 +140,7 @@ def pub(course_name)
 end
 
 
+# beginning of the game
 puts "You browse coinmarketcap website."
 puts "Which coin do you choose to track?"
 puts "1) Bitcoin?"
@@ -146,26 +150,28 @@ puts "3) Another one?"
 crypto = get_data
 
 if crypto == "1"
-  puts "There's a giant whale that will create a violent crash."
+  puts "There's a giant whale that might create a violent crash on the market."
   puts "What do you do?"
-  puts "1. Change your BTC into ETC..."
-  puts "   in order to build something (ICO, DApps...)"
+  puts "1. Change your BTC into ETH (or EOS or NEM or others) in order to..."
+  puts "   learn and build something on a blockchain (ICO, DApps...)"
   puts "2. Convert your BTC into FIAT currencies"
 
   crash = get_data
 
   if crash == "1"
     puts "The whale had destroyed the market so quickly..."
-    puts "that your ETC worth nothing anymore!"
-    puts "Game over!"
-    puts "Since you don't have money anymore..."
+    puts "that your ETH worth nothing now!"
+    puts "Game over you lose your crypto funds!"
+    puts "Even though you don't have money anymore... you still have time!"
     pub("cdbssr")
   elsif crash == "2"
     puts "You succedded to save your money."
     puts "Well done!"
+    puts "Maybe you should invest in yourself, it would be safer!"
     pub("blockchain_pack")
   else
-    puts "Well, doing %s is probably a better option for you." % crash
+    puts "Well, doing %s is probably a better option for you..." % crash
+    puts "in your own imaginary world!"
   end
 
 elsif crypto == "2"
@@ -182,10 +188,11 @@ elsif crypto == "2"
   if move == "1"
     puts "ETH is still alive..."
     puts "but the competition is hard!"
-    puts "So you won't make money."
-    puts "But you can learn how to code DApps with solidity."
+    puts "So you won't make money without learning!"
+    puts "But you can learn how to code DApps with Solidity."
     solidity = "https://solidity.readthedocs.io/en/v0.5.8/"
     puts "Here is the official documentation #{solidity}"
+    puts "And other technologies as well!"
     pub("cddb")
   elsif move == "2"
     puts "I hope you're ready for hard learning..."
@@ -195,22 +202,24 @@ elsif crypto == "2"
     puts "Go visit this website #{eos} for more details!"
     pub("cddb")
   elsif move == "3"
-    puts "Good news, smart contracts on NEM are build with JavaScript!"
+    puts "Good news, smart contracts on NEM are built with JavaScript!"
     nem = "https://nem.io/"
     puts "Go visit this website #{nem} for more details!"
     pub("cddb")
   elsif move == "4"
-    puts "Frankly speaking I don't know anything about the NEO blockchain."
+    puts "Frankly speaking I don't know anything yet about NEO."
     puts "So you have to make your own research, good luck!"
     neo = "https://neo.org/"
     puts "Go visit this website #{neo} for more details!"
     neo-python = "https://github.com/CityOfZion/neo-python/blob/master/README.rst"
-    puts "Or check this GitHub page: #{neo-python}"
+    puts "Or check this GitHub repository: #{neo-python}"
     pub("cddb")
   else
     puts "I think you need some basic maths lessons!"
     prglump = "https://www.youtube.com/channel/UCLxVJHhqaLMuyTcbUsoCrFg/videos?view=0&sort=p&flow=grid"
     puts "Perhaps you can learn something on this YouTube channel #{prglump}"
+    interviews = "https://www.youtube.com/playlist?list=PLUJNJAesbJGVGDiZJ8WvcEC3e1O5cDb5r"
+    puts "If you want to learn from the IT pros, check out this playlist #{interviews}"
   end
 
 elsif crypto == "3"
@@ -256,6 +265,10 @@ elsif crypto == "3"
         puts "Go visit this website #{xlm}"
     else
       puts "Go learn how to read English!"
+      dyse = "https://doyouspeakenglish.fr/"
+      puts "If you're French, go there: #{dyse}"
+      babel = "https://www.youtube.com/playlist?list=PLfKvL-VUSKAnkBk88BAb3oq1MlGVnhwcY"
+      puts "If you want to learn other languages, check this out: #{babel}"
     end
 
   elsif wirex == "2"
