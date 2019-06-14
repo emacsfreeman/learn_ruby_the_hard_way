@@ -1,6 +1,18 @@
 # If you want to try this game quickly just copy paste this code
 # in the FREE online IDE: https://repl.it/languages/ruby
 
+##############################
+# Look at my courses on Podia
+#############################
+def podia
+  podia = "https://laurentgarnier.podia.com/"
+  puts "Go visit my courses on Podia: #{podia}"
+  puts "What if you want to create your own course?"
+  puts "What if you could make money online?"
+  own_course = "http://bit.ly/podia-profil"
+  puts "Just click here: #{own_course}"
+end
+
 # automate the input with "> " prompt
 def get_data
   print "> "
@@ -8,7 +20,150 @@ def get_data
   return data
 end
 
+###############################
+# If you want to learn English
+###############################
+def learn_english
+    puts "Go learn English!"
+    dyse = "https://doyouspeakenglish.fr/"
+    puts "If you're French, go there for FREE: #{dyse}"
+    english_kit = "http://bit.ly/kit-anglais"
+    puts "And for only 1€ you can get a complete starter kit here: #{english_kit}"
+    grammar = "https://learnenglish.britishcouncil.org/skills"
+    puts "Otherwise go there: #{grammar}"
+    superprof_english = "http://bit.ly/superprof-anglais"
+    puts "If you want private lessons, checkout my profile here: #{superprof_english}"
+    podia
+end
+
+######################################################
+# Complete human language starter kit for only 1€ each
+######################################################
+def starter_kit
+  puts "For only 1€ per language you can get a complete starter kit:"
+  german = "http://bit.ly/kit-allemand"
+  arabic = "http://bit.ly/kit-arabe"
+  chinese = "http://bit.ly/kit-chinois"
+  spanish = "http://bit.ly/kit-espagnol"
+  hebrew = "http://bit.ly/2HzxAsx"
+  portuguese = "http://bit.ly/kit-portugais"
+  russian = "http://bit.ly/kit-russe"
+
+  babel_kit = {
+    "german" => german,
+    "arabic" => arabic,
+    "chinese" => chinese,
+    "spanish" => spanish,
+    "hebrew" => hebrew,
+    "portuguese" => portuguese,
+    "russian" => russian
+  }
+
+  babel_kit.each do |key, value|
+    puts "Learn #{key} for 1€ by clicking here #{value}"
+  end
+end
+
+###########################################
+# If you want to learn with human languages
+###########################################
+def learn_human_languages
+    puts "Do you want to learn English?"
+    puts "1. Yes"
+    puts "2. No"
+
+    english = get_data
+
+    if english == "1"
+      learn_english
+    else
+      babel = "https://www.youtube.com/playlist?list=PLfKvL-VUSKAnkBk88BAb3oq1MlGVnhwcY"
+      puts "If you want to learn other languages, check this out for FREE: #{babel}"
+      starter_kit
+      podia
+    end
+end
+
+#######################################
+# If you want to learn more about math
+######################################
+def learn_math
+  puts "If you need some basic maths lessons."
+  prglump = "https://www.youtube.com/channel/UCLxVJHhqaLMuyTcbUsoCrFg/videos?view=0&sort=p&flow=grid"
+  puts "Perhaps you can learn something on this YouTube channel #{prglump}"
+  superprof_math = "https://bit.ly/2wlBbF9"
+  puts "If you want more advance math private lessons, checkout my profile here: #{superprof_math}"
+  podia
+end
+
+####################################
+# If you want to learn more about IT
+####################################
+def learn_it
+  interviews = "https://www.youtube.com/playlist?list=PLUJNJAesbJGVGDiZJ8WvcEC3e1O5cDb5r"
+  puts "If you want to learn from the IT pros, check out this playlist #{interviews}"
+  superprof_it = "http://bit.ly/superprof-info"
+  puts "If you want private lessons, checkout my profile here: #{superprof_it}"
+  podia
+end
+
+#################################
+# If you want to learn something
+#################################
+def do_you_want_to_learn(something)
+  puts "Do you want to learn #{something}?"
+  puts "1. Yes"
+  puts "2. No"
+
+  something = get_data
+  return something
+end
+
+#############################
+# the main learning function
+#############################
+def learn
+
+  language = do_you_want_to_learn("human languages")
+
+  if language == "1"
+    learn_human_languages
+  end
+
+  math = do_you_want_to_learn("math")
+
+  math = get_data
+
+  if math == "1"
+    learn_math
+  end
+
+  it = do_you_want_to_learn("it")
+
+  it = get_data
+
+  if it == "1"
+    learn_it
+  end
+end
+
+##################################
+# Learning is the meaning of life!
+##################################
+def learning
+  learning = "USE YOUR TIME TO LEARN!"
+  dashes = "-" * learning.length
+  equals = "=" * learning.length
+  puts dashes
+  puts equals
+  puts learning
+  puts equals
+  puts dashes
+end
+
+###################################################
 # propose 3 easy wallet to get started with cryptos
+###################################################
 def wallet
   # urls
   binance_url = "http://bit.ly/binance-coinmarket"
@@ -21,9 +176,9 @@ def wallet
   binance_name = "Binance"
 
   #messages
-  wirex_msg1 = "\tThe easiest one!\n"
+  wirex_msg1 = "\tWirex is the easiest wallet to use!\n"
   wirex_msg2 = "\tGet a visa card related to your cryptos!\n"
-  wirex_msg3 = "\tHas just launched its own crypto!"
+  wirex_msg3 = "\tWirex has just launched its own crypto!"
   wirex_msg = wirex_msg1 + wirex_msg2 + wirex_msg3
 
   # concatenate
@@ -40,7 +195,9 @@ def wallet
   puts dashes
 end
 
+###############################################
 # Say goodbye politely and propose to come back
+###############################################
 def goodbye
   puts "At your local time is it:"
   puts "1. Morning?"
@@ -57,7 +214,8 @@ def goodbye
   elsif time == "4"
     puts "Good night!"
   else
-    puts "I don't know what to say!"
+    puts "I don't know what to say because your answer is out of the box!"
+
   end
 
   thanks = "Thanks for using this program."
@@ -67,7 +225,9 @@ def goodbye
   podia
 end
 
+##########################################
 # Propose to get a domain on a blockchain
+##########################################
 def domain
   puts "Do you know Zilliqa blockchain?"
   web_zil = "https://zilliqa.com/"
@@ -81,12 +241,12 @@ def domain
   if domain == "1"
     zil = "http://bit.ly/unstoppabledomain"
     puts "Go visit this website #{zil}"
-  else
-    goodbye
   end
 end
 
+#############
 # buy crypto
+#############
 def buy_crypto
   puts "Do you want to buy crypto?"
   puts "1. Yes"
@@ -97,14 +257,14 @@ def buy_crypto
   if buy == "1"
     puts "You have 3 good and easy options to get started:"
     wallet
-  elsif buy == "2"
     domain
-  else
-    goodbye
   end
 end
 
 
+####################################################
+# Learn How Blockchain Works and Different Use Case
+###################################################
 def cdbssr
   cdbssr = "http://bit.ly/cdbssr-free"
   puts "Maybe you could learn some basics about the technology?"
@@ -115,6 +275,9 @@ def cdbssr
   podia
 end
 
+####################################
+# Get 4 courses, pay the price of 2
+####################################
 def blockchain_pack
   puts "If you want to go further, just check my blockchain pack:"
   blockchain_pack = "https://laurentgarnier.podia.com/pack-blockchain"
@@ -123,6 +286,9 @@ def blockchain_pack
   podia
 end
 
+###############################
+# Become a blockchain developer
+###############################
 def cddb
   cddb = "http://bit.ly/cddb-podia"
   puts "Or get my Blockchain developer bootcamp here #{cddb}"
@@ -130,13 +296,6 @@ def cddb
   podia
 end
 
-def podia
-  podia = "https://laurentgarnier.podia.com/"
-  puts "Go visit my courses page on Podia: #{podia}"
-  puts "What if you want to create your own course and make money online?"
-  own_course = "http://bit.ly/podia-profil"
-  puts "Just click here: #{own_course}"
-end
 
 # propose some of my courses to go further in the blockchain adventure
 # be aware that all my courses are in French, but if you ask I could
@@ -158,7 +317,9 @@ def pub(course_name)
   money = get_data
 
   if money == "1"
+    podia
     buy_crypto
+    domain
   else
     puts "Do you want a free course?"
     puts "1. Yes, of course!"
@@ -170,11 +331,11 @@ def pub(course_name)
       cdbssr
     else
       podia
+      domain
     end
-
-    goodbye
   end
 end
+
 
 
 # beginning of the game
@@ -197,18 +358,28 @@ if crypto == "1"
 
   if crash == "1"
     puts "The whale had destroyed the market so quickly..."
-    puts "that your ETH worth nothing now!"
+    puts "that your ETH (or other cryptos) worth nothing now!"
     puts "Game over you lose your crypto funds!"
     puts "Even though you don't have money anymore... you still have time!"
+    learning
     pub("cdbssr")
+    learn
+    goodbye
   elsif crash == "2"
     puts "You succedded to save your money."
     puts "Well done!"
     puts "Maybe you should invest in yourself, it would be safer!"
+    puts "Learning is the best investment!"
+    learning
     pub("blockchain_pack")
+    learn
+    goodbye
   else
     puts "Well, doing %s is probably a better option for you..." % crash
     puts "in your own imaginary world!"
+    learning
+    learn
+    goodbye
   end
 
 elsif crypto == "2"
@@ -230,19 +401,28 @@ elsif crypto == "2"
     solidity = "https://solidity.readthedocs.io/en/v0.5.8/"
     puts "Here is the official documentation #{solidity}"
     puts "And other technologies as well!"
+    learning
     pub("cddb")
+    learn
+    goodbye
   elsif move == "2"
     puts "I hope you're ready for hard learning..."
     puts "because C++ is definitely not a peace of cake!"
     puts "And that's the tool for building DApps on EOS!"
     eos = "https://eos.io/"
     puts "Go visit this website #{eos} for more details!"
+    learning
     pub("cddb")
+    learn
+    goodbye
   elsif move == "3"
     puts "Good news, smart contracts on NEM are built with JavaScript!"
     nem = "https://nem.io/"
     puts "Go visit this website #{nem} for more details!"
+    learning
     pub("cddb")
+    learn
+    goodbye
   elsif move == "4"
     puts "Frankly speaking I don't know anything yet about NEO."
     puts "So you have to make your own research, good luck!"
@@ -250,13 +430,13 @@ elsif crypto == "2"
     puts "Go visit this website #{neo} for more details!"
     neo-python = "https://github.com/CityOfZion/neo-python/blob/master/README.rst"
     puts "Or check this GitHub repository: #{neo-python}"
+    learning
     pub("cddb")
+    learn
+    goodbye
   else
-    puts "I think you need some basic maths lessons!"
-    prglump = "https://www.youtube.com/channel/UCLxVJHhqaLMuyTcbUsoCrFg/videos?view=0&sort=p&flow=grid"
-    puts "Perhaps you can learn something on this YouTube channel #{prglump}"
-    interviews = "https://www.youtube.com/playlist?list=PLUJNJAesbJGVGDiZJ8WvcEC3e1O5cDb5r"
-    puts "If you want to learn from the IT pros, check out this playlist #{interviews}"
+    learning
+    learn
   end
 
 elsif crypto == "3"
@@ -282,36 +462,71 @@ elsif crypto == "3"
     if wirex_coin == "1"
       ltc = "https://litecoin.org/"
       puts "Go visit this website #{ltc}"
+      learning
+      pub("blockchain_pack")
+      learn
+      goodbye
     elsif wirex_coin == "2"
         xrp = "https://ripple.com/xrp/"
         puts "Go visit this website #{xrp}"
+        learning
+        pub("blockchain_pack")
+        learn
+        goodbye
     elsif wirex_coin == "3"
         waves = "https://wavesplatform.com/"
         puts "Go visit this website #{waves}"
+        learning
+        pub("cddb")
+        learn
+        goodbye
     elsif wirex_coin == "4"
         wollo = "https://pigzbe.com/"
         puts "Go visit this website #{wollo}"
+        learning
+        pub("cddb")
+        learn
+        goodbye
     elsif wirex_coin == "5"
         dai = "https://makerdao.com/en/"
         puts "Go visit this website #{dai}"
+        learning
+        pub("cddb")
+        learn
+        goodbye
     elsif wirex_coin == "6"
         nano = "https://nano.org/en"
         puts "Go visit this website #{nano}"
+        learning
+        pub("cddb")
+        learn
+        goodbye
     elsif wirex_coin == "7"
         xlm = "https://www.stellar.org/"
         puts "Go visit this website #{xlm}"
+        learning
+        pub("cddb")
+        learn
+        goodbye
     else
-      puts "Go learn how to read English!"
-      dyse = "https://doyouspeakenglish.fr/"
-      puts "If you're French, go there: #{dyse}"
-      babel = "https://www.youtube.com/playlist?list=PLfKvL-VUSKAnkBk88BAb3oq1MlGVnhwcY"
-      puts "If you want to learn other languages, check this out: #{babel}"
+      learning
+      learn
+      goodbye
     end
 
   elsif wirex == "2"
     wallet = "https://bit.ly/2QgCLRH"
     puts "Go visit this website #{wallet}"
+    puts "Get my FREE course"
+    learning
+    pub("cdbssr")
+    learn
+    goodbye
   else
-    puts "Go learn how to read English!"
+    puts "Get my FREE course"
+    learning
+    pub("cdbssr")
+    learn
+    goodbye
   end
 end
