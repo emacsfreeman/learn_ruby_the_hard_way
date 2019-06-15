@@ -1,7 +1,30 @@
 # Source for consensus algorithm: https://hackernoon.com/consensuspedia-an-encyclopedia-of-29-consensus-algorithms-e9c4b4b7d08f
 
-# menu for consensus
+
+# menu to choose which consensus to explore
 def consensus_menu
+  intro = "What consensus algorithm do you want to study?"
+  consensus1 = "1. Proof of Work (PoW)"
+  consensus2 = "2. Proof of Stake (PoS)"
+  quit       = "Q. Do you want to quit?"
+
+  dashes = "-" * intro.length
+
+  menu = [consensus1, consensus2, quit]
+
+  puts dashes
+  puts intro
+  puts "=" * intro.length
+  menu.each { |consensus| puts consensus }
+  puts dashes
+
+  print "> "
+  choice = $stdin.gets.chomp
+  return choice
+end
+
+# features for each consensus
+def consensus_features
   option1 = "1. Do you want to know pros and cons?"
   option2 = "2. Do you want to know some cryptos which are using this type of consensus?"
   option3 = "3. Do you want to know the consensus type?"
@@ -11,10 +34,10 @@ def consensus_menu
 
   dashes = "-" * option2.length
 
-  menu = [option1, option2, option3, option4, option5, quit]
+  features = [option1, option2, option3, option4, option5, quit]
 
   puts dashes
-  menu.each { |opt| puts opt }
+  features.each { |opt| puts opt }
   puts dashes
 
   print "> "
@@ -37,9 +60,10 @@ def proof_of_work
 
   pros = "It has been tested in the wild since 2009 and stands steady today as well."
 
+  eco_scale = "https://en.wikipedia.org/wiki/Economies_of_scale"
   cons1 = "It's slow."
   cons2 = "Uses a lot of energy."
-  cons3 = "Susceptible to economies of scale."
+  cons3 = "Susceptible to ecnomies of scale \n\t   (for more details about this topic click on this link:\n\t     #{eco_scale})."
 
   cons = [cons1, cons2, cons3]
 
@@ -76,7 +100,7 @@ def proof_of_work
   choice = "0"
 
   while !choice.include?("Q") && !choice.include?("q")
-    choice = consensus_menu
+    choice = consensus_features
     if choice.include?("1")
       pros = p_o_w["pros"]
       puts "Pros: #{pros}"
@@ -111,4 +135,98 @@ def proof_of_work
 
 end
 
-proof_of_work
+
+# 2) Proof of Stake
+def proof_of_stake
+  title("Proof of Stake")
+
+  eco_scale = "https://en.wikipedia.org/wiki/Economies_of_scale"
+  pros1 = "Energy efficient"
+  pros2 = "More expensive to attack for attackers"
+  pros3 = "Not susceptible to ecnomies of scale \n\t   (for more details about this topic click on this link:\n\t     #{eco_scale})."
+
+  pros = [pros1, pros2, pros3]
+
+  nothing_at_stake = "https://medium.com/coinmonks/understanding-proof-of-stake-the-nothing-at-stake-theory-1f0d71bc027"
+  cons = "nothing-at-stake problem \n(for more details click on this link:\n#{nothing_at_stake})"
+
+
+  ppc = {name: "Peercoin", website: "https://peercoin.net/"}
+  pivx = {name: "Pivx", website: "https://pivx.org/"}
+  rdd = {name: "Reddcoin", website: "https://reddcoin.com/"}
+
+  used_by = [ppc, pivx, rdd]
+
+  consensus_type = "Competitive consensus"
+
+
+  explanation = """
+  The proof of stake was created as an alternative to the proof of work (PoW),
+  to tackle inherent issues in the latter. Here instead of using mining, you
+  have to have some stake(coins) in the system. So, if you own 10% of the
+  stake(coins), then your probability of mining next block will be 10%.
+  """
+
+  further_reading = "https://en.wikipedia.org/wiki/Proof_of_stake"
+
+  p_o_s = {
+    "pros" => pros,
+    "cons" => cons,
+    "used_by" => used_by,
+    "consensus_type" => consensus_type,
+    "explanation" => explanation,
+    "further_reading" => further_reading
+  }
+
+  choice = "0"
+
+  while !choice.include?("Q") && !choice.include?("q")
+    choice = consensus_features
+    if choice.include?("1")
+      puts "Pros:"
+      p_o_s["pros"].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
+      pros = p_o_s["cons"]
+      puts "Cons: #{pros}"
+    elsif choice.include?("2")
+      puts "Used by:"
+      p_o_s["used_by"].each_with_index do
+        |valeur, index|
+        puts "#{index+1})"
+        valeur.each do
+          |key, value| puts " #{key}: #{value}"
+        end
+      end
+      puts "And others."
+    elsif choice.include?("3")
+      consensus_type = p_o_s["consensus_type"]
+      puts "Type: #{consensus_type}"
+    elsif choice.include?("4")
+      explanation = p_o_s["explanation"]
+      puts "Explanation: #{explanation}"
+    elsif choice.include?("5")
+      further_reading = p_o_s["further_reading"]
+      puts "Further Reading: #{further_reading}"
+    elsif choice.include?("Q") || choice.include?("q")
+      break
+    else
+      puts "Error"
+    end
+  end
+
+
+end
+
+
+choice = "0"
+while !choice.include?("Q") && !choice.include?("q")
+  choice = consensus_menu
+  if choice.include?("1")
+    proof_of_work
+  elsif choice.include?("2")
+    proof_of_stake
+  elsif choice.include?("Q") || choice.include?("q")
+    break
+  else
+    puts "Error"
+  end
+end
