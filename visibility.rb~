@@ -1,0 +1,16 @@
+class Visibility
+  def public_method
+    puts "public"
+  end
+
+  protected
+
+  def protected_method
+    puts "protected"
+  end
+
+  private
+
+  def private_method
+  end
+  

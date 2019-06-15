@@ -1,0 +1,7 @@
+class Dog < Animal
+  WILD = false
+
+  def cry
+    puts "Woof!"
+  end
+end

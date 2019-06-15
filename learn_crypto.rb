@@ -1,4 +1,4 @@
-# Source for consensus algorithm: https://hackernoon.com/consensuspedia-an-encyclopedia-of-29-consensus-algorithms-e9c4b4b7d08f
+# Source for consensus algorithms: https://hackernoon.com/consensuspedia-an-encyclopedia-of-29-consensus-algorithms-e9c4b4b7d08f
 
 
 # menu to choose which consensus to explore
@@ -31,7 +31,7 @@ def consensus_features
   option3 = "3. Do you want to know the consensus type?"
   option4 = "4. Do you want a global explanation?"
   option5 = "5. Do you want further reading?"
-  quit = "Q. Do you want to quit?"
+  quit    = "Q. Do you want to quit?"
 
   dashes = "-" * option2.length
 
@@ -46,21 +46,94 @@ def consensus_features
   return choice
 end
 
-# title
-def title(name_of_algo)
-  title = "Technical sheet for #{name_of_algo} consensus algorithm"
-  border = "=" * title.length
-  puts border
-  puts title
-  puts border
-end
+
+
+
 # 30 consensus type
+class ConsensusAlgorithm
+
+  # class variables shared by all instances of this class
+  @@function = 'consensus algorithm for a decentralized network'
+
+  # Basic initializer
+  def initialize(name, pros, cons, used_by, consensus_type, explanation, further_reading)
+    # Assign the argument to the 'name' instance variable for the instance.
+    @name = name
+    @pros = pros
+    @cons = cons
+    @used_by = used_by
+    @consensus_type = consensus_type
+    @explanation = explanation
+    @further_reading = further_reading
+  end
+
+  attr_accessor :name
+  attr_accessor :pros
+  attr_accessor :cons
+  attr_accessor :used_by
+  attr_accessor :consensus_type
+  attr_accessor :explanation
+  attr_accessor :further_reading
+
+  # A class method uses self to distinguish from instance methods
+  # It can only be called on the class, not an instance.
+  def self.title(name_of_algo)
+    title = "Technical sheet for #{name_of_algo} consensus algorithm"
+    border = "=" * title.length
+    puts border
+    puts title
+    puts border
+  end
+
+  def function
+    @@function
+  end
+
+  # collect all the features into a hash
+  def technical_features
+    @tech_feat = {
+      pros: @pros,
+      cons: @cons,
+      used_by: @used_by,
+      consensus_type: @consensus_type,
+      explanation: @explanation,
+      further_reading: @further_reading
+    }
+
+    puts ""
+    return @tech_feat
+  end
+
+
+  # display pros and cons
+  # def display_pros_and_cons
+  #   puts "Pros:"
+  #   #@pros.each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
+  #   puts "#{@pros[0]}"
+  #
+  #   puts "Cons:"
+  #   #@cons.each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
+  #   puts "#{@cons[0]}"
+  # end
+
+end
+
+def instantiation(var_algo_name, title, presentation)
+  puts title
+  puts presentation
+  return var_algo_name.technical_features
+end
+
+
 # 1) Proof of Work
 def proof_of_work
-  title("Proof of Work")
+  # inputs for the class method
 
+  # pros
   pros = "It has been tested in the wild since 2009 and stands steady today as well."
+  pros = [pros]
 
+  # cons
   eco_scale = "https://en.wikipedia.org/wiki/Economies_of_scale"
   cons1 = "It's slow."
   cons2 = "Uses a lot of energy."
@@ -68,6 +141,7 @@ def proof_of_work
 
   cons = [cons1, cons2, cons3]
 
+  # sample coins that use PoW algorithm
   btc = {name: "Bitcoin", website: "https://bitcoin.org/en/"}
   eth = {name: "Ethereum", website: "https://ethereum.org/"}
   ltc = {name: "Litecoin", website: "https://litecoin.org/"}
@@ -89,28 +163,32 @@ def proof_of_work
 
   further_reading = "https://en.bitcoin.it/wiki/Proof_of_work"
 
-  p_o_w = {
-    "pros" => pros,
-    "cons" => cons,
-    "used_by" => used_by,
-    "consensus_type" => consensus_type,
-    "explanation" => explanation,
-    "further_reading" => further_reading
-  }
+  # instantiation
+  pow = ConsensusAlgorithm.new('Proof of Work', pros, cons, used_by, consensus_type, explanation, further_reading)
+  title = ConsensusAlgorithm.title('Proof of Work')
+  presentation = """
+  #{pow.name} is the first #{pow.function}
+  used for the first time with the first blockchain technology created at the
+  same time as the first cryptocurrency called Bitcoin!
+  """
+  p_o_w = instantiation(pow, title, presentation)
+
 
   choice = "0"
 
+  # main loop
   while !choice.include?("Q") && !choice.include?("q")
     choice = consensus_features
     if choice.include?("1")
-      pros = p_o_w["pros"]
-      puts "Pros: #{pros}"
+      # display pros and cons
+      puts "Pros:"
+      p_o_w[:pros].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
 
       puts "Cons:"
-      p_o_w["cons"].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
+      p_o_w[:cons].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
     elsif choice.include?("2")
       puts "Used by:"
-      p_o_w["used_by"].each_with_index do
+      p_o_w[:used_by].each_with_index do
         |valeur, index|
         puts "#{index+1})"
         valeur.each do
@@ -119,13 +197,13 @@ def proof_of_work
       end
       puts "And others."
     elsif choice.include?("3")
-      consensus_type = p_o_w["consensus_type"]
+      consensus_type = p_o_w[:consensus_type]
       puts "Type: #{consensus_type}"
     elsif choice.include?("4")
-      explanation = p_o_w["explanation"]
+      explanation = p_o_w[:explanation]
       puts "Explanation: #{explanation}"
     elsif choice.include?("5")
-      further_reading = p_o_w["further_reading"]
+      further_reading = p_o_w[:further_reading]
       puts "Further Reading: #{further_reading}"
     elsif choice.include?("Q") || choice.include?("q")
       break
@@ -133,8 +211,6 @@ def proof_of_work
       puts "Error"
     end
   end
-
-
 end
 
 
@@ -308,7 +384,7 @@ def delayed_proof_of_work
 
 end
 
-
+# main program
 choice = "0"
 while !choice.include?("Q") && !choice.include?("q")
   choice = consensus_menu
