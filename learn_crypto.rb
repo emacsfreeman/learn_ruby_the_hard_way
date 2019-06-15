@@ -3,14 +3,15 @@
 
 # menu to choose which consensus to explore
 def consensus_menu
-  intro = "What consensus algorithm do you want to study?"
+  intro      = "What consensus algorithm do you want to study?"
   consensus1 = "1. Proof of Work (PoW)"
   consensus2 = "2. Proof of Stake (PoS)"
+  consensus3 = "3. Delayed (also called Delegated) Proof of Work (dPoW)"
   quit       = "Q. Do you want to quit?"
 
-  dashes = "-" * intro.length
+  dashes = "-" * consensus3.length
 
-  menu = [consensus1, consensus2, quit]
+  menu = [consensus1, consensus2, consensus3, quit]
 
   puts dashes
   puts intro
@@ -104,6 +105,7 @@ def proof_of_work
     if choice.include?("1")
       pros = p_o_w["pros"]
       puts "Pros: #{pros}"
+
       puts "Cons:"
       p_o_w["cons"].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
     elsif choice.include?("2")
@@ -185,8 +187,9 @@ def proof_of_stake
     if choice.include?("1")
       puts "Pros:"
       p_o_s["pros"].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
-      pros = p_o_s["cons"]
-      puts "Cons: #{pros}"
+
+      cons = p_o_s["cons"]
+      puts "Cons: #{cons}"
     elsif choice.include?("2")
       puts "Used by:"
       p_o_s["used_by"].each_with_index do
@@ -213,6 +216,95 @@ def proof_of_stake
     end
   end
 
+end
+
+
+# 3) Delayed Proof of Work
+def delayed_proof_of_work
+  title("Delayed Proof of Work")
+
+  pros1 = "Energy efficient"
+  pros2 = "Increased security"
+  pros3 = """
+  Can add value to other blockchains by indirectly providing Bitcoin (or any
+  secure chain) security without paying the cost of Bitcoin (or any secure
+  chain) transactions
+  """
+
+  pros = [pros1, pros2, pros3]
+
+  cons1 = "Only blockchains using PoW or PoS can be a part of this consensus."
+  cons2 = '''
+  Under "Notaries Active" mode the hashrate for different nodes (notary and
+  normal nodes) have to be calibrated, otherwise, the difference between the
+  hashrates can explode
+  '''
+
+  cons = [cons1, cons2]
+
+  kmd = {name: "Komodo", website: "https://komodoplatform.com/"}
+
+  used_by = [kmd]
+
+  consensus_type = "Collaborative consensus"
+
+
+  explanation = """
+  Delayed Proof of Work (dPoW) is a hybrid consensus method that allows one
+  blockchain to take advantage of the security provided through the hashing
+  power of a secondary blockchain. This is achieved through a group of notary
+  nodes that add data from the first blockchain onto the second, which would
+  then require both blockchains to be compromised to undermine the security of
+  the first. The first to make use of this consensus method is Komodo, which is
+  attached to the Bitcoin blockchain.
+  """
+
+  further_reading = "https://developers.komodoplatform.com/"
+
+  d_p_o_w = {
+    "pros" => pros,
+    "cons" => cons,
+    "used_by" => used_by,
+    "consensus_type" => consensus_type,
+    "explanation" => explanation,
+    "further_reading" => further_reading
+  }
+
+  choice = "0"
+
+  while !choice.include?("Q") && !choice.include?("q")
+    choice = consensus_features
+    if choice.include?("1")
+      puts "Pros:"
+      d_p_o_w["pros"].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
+
+      puts "Cons:"
+      d_p_o_w["cons"].each_with_index { |val, index| puts "\t#{index+1}) #{val}" }
+    elsif choice.include?("2")
+      puts "Used by:"
+      d_p_o_w["used_by"].each_with_index do
+        |valeur, index|
+        puts "#{index+1})"
+        valeur.each do
+          |key, value| puts " #{key}: #{value}"
+        end
+      end
+      puts "And others."
+    elsif choice.include?("3")
+      consensus_type = d_p_o_w["consensus_type"]
+      puts "Type: #{consensus_type}"
+    elsif choice.include?("4")
+      explanation = d_p_o_w["explanation"]
+      puts "Explanation: #{explanation}"
+    elsif choice.include?("5")
+      further_reading = d_p_o_w["further_reading"]
+      puts "Further Reading: #{further_reading}"
+    elsif choice.include?("Q") || choice.include?("q")
+      break
+    else
+      puts "Error"
+    end
+  end
 
 end
 
@@ -224,6 +316,8 @@ while !choice.include?("Q") && !choice.include?("q")
     proof_of_work
   elsif choice.include?("2")
     proof_of_stake
+  elsif choice.include?("3")
+    delayed_proof_of_work
   elsif choice.include?("Q") || choice.include?("q")
     break
   else
